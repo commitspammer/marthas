@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Martha's</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: FontAwesome;
+        }
+    </style>
+    <script>
+        function displaySidebar(displayValue) {
+            document.getElementById("sidebar").style.display = displayValue;
+            document.getElementById("overlay").style.display = displayValue;
+        }
+
+        function toggleSearch() {
+            search = document.getElementById("search");
+            search.style.display = (search.style.display == "none") ? "block" : "none";
+        }
+
+        function ajaxTest() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                const json = JSON.parse(this.responseText);
+                document.getElementById("someId").innerHTML = json.att;
+            }
+            xhttp.open("GET", "test.json");
+            xhttp.send();
+        }
+    </script>
+</head>
+
+<body class="w3-teal">
+    <!-- <div class="w3-content" style="max-width: 1140px;"> -->
+    <div>
+
+        <!-- SIDEBAR -->
+        <nav class="w3-sidebar w3-card-2 w3-light-grey w3-bar-block w3-collapse w3-animate-left" style="width:200px;z-index:3;" id="sidebar">
+            <div class="w3-container w3-display-container w3-bar-item" onclick="displaySidebar('none')">
+                <a href="/" class="w3-xlarge w3-wide" style="text-decoration:none; font-weight: bold">Martha's</a>
+            </div>
+            <div class="w3-padding-64 w3-large" style="font-weight:bold">
+                <a href="/catalogo" class="w3-bar-item w3-button">CATÁLOGO</a>
+                <a href="/catalogo?tags=camisa" class="w3-bar-item w3-button">Camisas</a>
+                <a href="/catalogo?tags=blusa" class="w3-bar-item w3-button">Blusas</a>
+                <a href="/catalogo?tags=jaqueta" class="w3-bar-item w3-button">Jaquetas</a>
+                <a href="/catalogo?tags=vestido" class="w3-bar-item w3-button">Vestidos</a>
+                <a href="/catalogo?tags=calca" class="w3-bar-item w3-button">Calças</a>
+                <a href="/catalogo?tags=short" class="w3-bar-item w3-button">Shorts</a>
+                <a href="/catalogo?tags=saia" class="w3-bar-item w3-button">Saias</a>
+                <a href="/catalogo?tags=sapatos" class="w3-bar-item w3-button">Sapatos</a>
+                <a href="/catalogo?tags=salto" class="w3-bar-item w3-button">Saltos</a>
+                <a href="/catalogo?tags=bolsa" class="w3-bar-item w3-button">Bolsas</a>
+                <a href="/catalogo?tags=cinto" class="w3-bar-item w3-button">Cintos</a>
+            </div>
+            <div class="w3-padding-16 w3-large" style="font-weight:bold">
+                <a href="#newsletter" class="w3-bar-item w3-button">Newsletter</a>
+                <a href="#" class="w3-bar-item w3-button">Quem Somos</a>
+                <a href="#contato" class="w3-bar-item w3-button">Contato</a>
+            </div>
+        </nav>
+
+        <!-- OVERLAY -->
+        <div class="w3-overlay w3-hide-large" onclick="displaySidebar('none')" style="cursor:pointer" id="overlay"></div>
+
+        <!-- MAIN -->
+        <div class="w3-main w3-white" style="margin-left:200px">
+
+            <!-- HEADER -->
+            <header class="w3-bar w3-teal w3-xlarge">
+                <div class="w3-container w3-left w3-hide-large w3-bar-item">
+                    <a href="/" class="w3-wide" style="text-decoration:none; font-weight:bold">Martha's</a>
+                </div>
+                <div class="w3-bar-item w3-right w3-button w3-hide-large" onclick="displaySidebar('block')">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <a href="/login">
+                <div class="w3-bar-item w3-right w3-button">
+                    <i class="fa fa-sign-in"></i>
+                </div>
+                </a>
+                <div class="w3-bar-item w3-right w3-button">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="w3-bar-item w3-right w3-small w3-animate-left w3-mobile" style="width:240px;" id="search">
+                    <form method="GET" action="/catalogo">
+                        <input class="w3-input w3-round-large w3-border-black" placeholder="&#xf002" type="text" name="tags">
+                    </form>
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+	    <%- body %>
+
+            <!-- NEWSLETTER -->
+            <div class="w3-light-grey">
+            <div class="w3-content w3-row-padding w3-padding-32">
+                <div class="w3-col l6 m6 s12 w3-center">
+                    <div class="w3-container w3-section" id="newsletter">
+                        <h2 class="w3-wide" style="font-weight: bold;">Newsletter</h2>
+                        <p>Seja o primeiro a saber das novidades da loja!</p>
+                        <form method="post">
+                            <input class="w3-input w3-round-large w3-border-black" placeholder="Digite seu e-mail" type="text"></p>
+                            <button class="w3-button w3-block w3-round-large w3-black">Inscrever-se</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="w3-col l6 m6 s12 w3-center">
+                    <div class="w3-container w3-section" id="contato">
+                        <h2 class="w3-wide" style="font-weight: bold;">Contato</h2>
+                        <p>Sua opinião ou dúvida nos ajuda a crescer!</p>
+                        <form method="post">
+                            <input class="w3-input w3-round-large w3-border-black" placeholder="Digite seu nome" type="text"></p>
+                            <input class="w3-input w3-round-large w3-border-black" placeholder="Digite seu e-mail" type="text"></p>
+                            <input class="w3-input w3-round-large w3-border-black" placeholder="Digite o assunto" type="text"></p>
+                            <input class="w3-input w3-round-large w3-border-black" placeholder="Digite a mensagem" type="text"></p>
+                            <button class="w3-button w3-block w3-round-large w3-black">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="w3-center w3-teal w3-padding">
+                <h1 class="w3-wide" style="font-weight: bold;">Martha's</h1>
+                <p>Feito com <a href="https://www.w3schools.com/w3css/default.asp">W3.CSS</a><br>Copyleft 2022 @ Nenhum dos Direitos Reservados</p>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- <script defer type="text/javascript" src="/catalogo.js"></script> -->
+</body>
+
+</html>

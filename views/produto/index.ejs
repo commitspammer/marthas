@@ -1,0 +1,20 @@
+<div class="w3-center w3-light-grey w3-padding">
+    <h3 class="w3-wide" style="font-weight: bold;">PRODUTO</h3>
+</div>
+<div class="w3-row-padding w3-content" style="max-width:1400px">
+    <div class="w3-col l6 m6 s12 w3-center">
+    <div class="w3-section">
+        <img src="<%= product.image %>" style="width:100%;max-width:500px" id="product-image">
+    </div>
+    </div>
+    <div class="w3-col l6 m6 s12 w3-left-align">
+    <div class="w3-section">
+        <h3 id="product-name" style="font-weight:bold"><%= product.name %></h3>
+        <h4 id="product-price" style="font-weight:bold">R$<%= product.price %>,00</h4>
+        <h4 id="product-stock" style="font-weight:bold"><%= product.stock %> restantes</h4>
+        <p id="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <button class="w3-button w3-round-large w3-green">Adicionar ao Carrinho</button>
+    </div>
+    </div>
+</div>
+

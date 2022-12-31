@@ -1,0 +1,23 @@
+<div class="w3-center w3-light-grey w3-padding">
+    <h3 class="w3-wide" style="font-weight: bold;">CATÁLOGO</h3>
+</div>
+<div class="w3-row-padding w3-content" style="display:flex;flex-wrap:wrap;max-width:1400px" id="product-grid">
+    <% products.forEach(p => { %>
+    <div class="w3-col l3 m4 s6 w3-center">
+        <div class="w3-card-2 w3-white w3-section">
+            <div class="w3-display-container">
+                <a href="/produto?id=<%= p.id %>" class="w3-hover-sepia">
+                    <img src="<%= p.image %>" style="object-fit:cover;width:100%;height:auto;aspect-ratio:1;">
+                    <div class="w3-tag w3-display-middle w3-display-hover">Ver mais <i class="fa fa-plus"></i></div>
+                </a>
+            </div>
+            <div class="w3-container w3-padding">
+                <div class="w3-left-align"><%= p.name %></div>
+                <div class="w3-left" style="font-weight:bold;">R$<%= p.price %>,00</div>
+                <div class="w3-right">x<%= p.stock %></div>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</div>
+
